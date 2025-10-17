@@ -1,1 +1,106 @@
-hi
+                                                                        Steps To Launch An EC2 Instance
+
+ What is a Server?
+-----------------------
+        A server is a powerful computer designed to process, store, and manage data for other devices or applications. Servers can host websites, run applications, or manage databases, making them an essential part of modern technology. They can operate locally (on-premises) or remotely through the cloud.
+
+Physical vs. Cloud Servers
+------------------------------
+        Physical Servers:
+                Physical servers are tangible machines located in datacenters or offices. They require maintenance, cooling, electricity, and space. While they offer full control, scaling or upgrading them can be time-consuming and costly.
+
+        Cloud Servers:
+                Cloud servers are virtual machines hosted on the internet. Providers like AWS, Azure, or Google Cloud provide these servers, eliminating the need for physical hardware. They are easy to scale, cost-effective, and require no manual maintenance.
+
+Which One is the Best?
+------------------------
+Cloud servers are generally the best choice for most use cases because they offer:
+
+        Scalability: Increase or decrease resources as needed.
+
+        Cost Efficiency: Pay only for what you use.
+
+        Ease of Management: No need to manage physical hardware.
+
+Physical servers might be preferred for industries needing dedicated on-premises infrastructure for regulatory or latency reasons.
+
+
+What is EC2?
+----------------
+        EC2 (Elastic Compute Cloud) is a web service provided by AWS (Amazon Web Services) that allows you to rent virtual servers on the cloud. You can use EC2 to run applications, host websites, or process data with complete control over the server configuration.
+
+Features of EC2
+----------------
+       1) Scalability: Automatically scale up or down based on demand.
+
+       2) Variety of Instances: Choose from a wide range of configurations (CPU, memory, storage).
+
+       3) Pay-as-You-Go: Pay only for the resources used.
+
+       4) Security: Integrated with AWS Identity and Access Management (IAM).
+
+       5) Global Reach: Launch instances in multiple AWS regions worldwide.
+
+       6) Customizability: Full control over the operating system, software, and configurations.
+
+
+How to Launch an EC2 Instance:
+--------------------------------
+        Here’s a step-by-step guide to launching an EC2 instance:
+
+1) Log in to the AWS Account.
+2) Go to AWS Management Console.
+3) Navigate to EC2: Search for "EC2" in the AWS services menu and open it.
+4) Click on Launch Instances
+5) Enter the Instance Name (We can give any name as our instance name, as I am giving MYSERVER, there is no rule for that)
+6) AMI (Amazon Machine Image): Used to select the OS of our Instance (Here I am selecting Amazon Linux kernel 5.10, which comes under the free tier eligible)
+7) Instance Type: This includes Hardware information about our Instance, like CPU & RAM. Always choose free-tier eligible instance types only (t2.micro or t3.micro)
+8) Key Pair (login):
+        A key pair in AWS is a set of two cryptographic keys: a public key and a private key.
+
+        The public key is stored securely in AWS and associated with your EC2 instance.
+
+        The private key is downloaded and stored securely by you, typically as a .pem file.
+
+        The key pair is used for secure access to your EC2 instance, ensuring that only authorised users can log in.
+
+        Now, click on Create key pair
+        Enter any name as the key-pair name and click on create key-pair
+
+9) Network Settings: This includes availability zones, Public IPs & VPC configurations.
+
+        A Security Group (SG) in AWS acts as a virtual firewall that controls traffic to and from EC2 instances. It uses inbound and outbound rules to allow or block traffic based on specific protocols, ports, and IP addresses.
+
+        Inbound rule: define the type of traffic that is allowed to enter your EC2 instance.
+
+        Outbound rule: define the type of traffic that is allowed to leave your EC2 instance.
+
+        Click on edit and enter the security group name
+        As you can see, the above image SSH represents Secure Shell, which is used to connect Linux OS Machines. Since our servers are working on Amazon Linux, we need this SSH port to connect to our servers
+
+10) Configure Storage:
+
+        EBS (Elastic Block Store) is an AWS service which is used to provide storage for our instances.
+        Min we have to maintain 8GB of EBS volume, and Max we have to  configure up to 16TB.
+        As a free-tier customer, we can take up to 30 GB of EBS volume.
+
+11) Now, click on Launch Instance.
+12) It will generate an instance ID. Scroll down and click on View all instances, and you will see your running instance
+
+
+
+How to terminate (delete) your instance
+------------------------------------------
+
+1) Select your instance
+2) Click on Instance State and Select Terminate (delete)
+3) Now the instance state will become the shutting down state, after 30 seconds, it turns to the terminated state. That means it's deleted completely.
+
+
+Note:
+1) If you delete the instance, the EBS Volume is also deleted automatically
+2) If you delete the instance, key pairs and Security groups will not be deleted. But don’t worry, we will not get billed for those resources because it is free; we can use these existing key pairs and security groups for future instances.
+
+Conclusion:
+--------------
+Launching an EC2 instance on AWS is simple and empowers you to deploy and manage servers without worrying about physical infrastructure. EC2’s flexibility, scalability, and cost-efficiency make it an ideal choice for developers, businesses, and anyone looking to leverage the power of the cloud
